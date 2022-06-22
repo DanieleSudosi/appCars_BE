@@ -30,13 +30,17 @@ public class Vettura {
     @Column(name = "quantita")
     private int quantita;
 
-    public Vettura(long id, String marca, String modello, Alimentazione alimentazione, String descrizione, int quantita) {
+    @Column(name = "img")
+    private String immagine;
+
+    public Vettura(long id, String marca, String modello, Alimentazione alimentazione, String descrizione, int quantita, String immagine) {
         this.id = id;
         this.marca = marca;
         this.modello = modello;
         this.alimentazione = alimentazione;
         this.descrizione = descrizione;
         this.quantita = quantita;
+        this.immagine = immagine;
     }
 
     public Vettura() {
@@ -69,4 +73,11 @@ public class Vettura {
 
     public void setQuantita(int quantita) {this.quantita = quantita;}
 
+    public String getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
 }

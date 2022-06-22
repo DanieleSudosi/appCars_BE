@@ -71,14 +71,6 @@ public class Contratto {
         this.durataMin = durataMin;
     }
 
-//    public Set<Noleggio> getNoleggiContratto() {
-//        return noleggiContratto;
-//    }
-//
-//    public void setNoleggiContratto(Set<Noleggio> noleggiContratto) {
-//        this.noleggiContratto = noleggiContratto;
-//    }
-
     public Set<Servizio> getServizi() {
         return servizi;
     }
