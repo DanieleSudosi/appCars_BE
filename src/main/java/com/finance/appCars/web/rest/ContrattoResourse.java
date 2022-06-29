@@ -41,7 +41,7 @@ public class ContrattoResourse {
         return this.contrattoService.updateContratto(c);
     }
 
-    @DeleteMapping("/contratto")
+    @DeleteMapping("/contratto/{id}")
     public void deleteContratto(@PathVariable long id){
         this.contrattoService.deleteContratto(id);
     }
