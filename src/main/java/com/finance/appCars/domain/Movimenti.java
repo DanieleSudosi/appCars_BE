@@ -3,7 +3,7 @@ package com.finance.appCars.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "movimenti")
@@ -15,9 +15,9 @@ public class Movimenti {
     private long id;
 
     @Column(name = "data_pagamento")
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private Date dataPagamento;
+//    @JsonFormat(pattern = "yyyy-MM-dd")
+//    @Temporal(TemporalType.DATE)
+    private LocalDate dataPagamento;
 
     @ManyToOne
     @JoinColumn(name="noleggio_id", nullable=false)
@@ -31,11 +31,11 @@ public class Movimenti {
         this.id = id;
     }
 
-    public Date getDataPagamento() {
+    public LocalDate getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(Date dataPagamento) {
+    public void setDataPagamento(LocalDate dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 
