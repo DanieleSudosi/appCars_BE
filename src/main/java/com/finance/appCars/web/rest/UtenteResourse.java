@@ -4,6 +4,7 @@ import com.finance.appCars.domain.Utente;
 import com.finance.appCars.domain.enumeration.Tipologia;
 import com.finance.appCars.service.UtenteService;
 import com.finance.appCars.service.dto.UtenteLoginDTO;
+import com.finance.appCars.service.dto.UtenteNoleggiatoreDTO;
 import com.finance.appCars.service.dto.UtenteRegistrazioneDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -61,6 +62,12 @@ public class UtenteResourse {
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
+    }
+
+    @GetMapping("/noleggiatore")
+    public List<UtenteNoleggiatoreDTO> getNoleggiatori(){
+
+        return this.utenteService.getNoleggiatori();
     }
 
 

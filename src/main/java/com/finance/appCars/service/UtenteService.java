@@ -7,11 +7,14 @@ import com.finance.appCars.domain.Utente;
 import com.finance.appCars.domain.enumeration.Tipologia;
 import com.finance.appCars.repository.UtenteRepository;
 import com.finance.appCars.service.dto.UtenteLoginDTO;
+import com.finance.appCars.service.dto.UtenteNoleggiatoreDTO;
 import com.finance.appCars.service.dto.UtenteRegistrazioneDTO;
+import com.finance.appCars.service.mapper.UtenteNoleggiatoreMapper;
 import com.finance.appCars.service.mapper.UtenteRegistrazioneMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -67,5 +70,15 @@ public class UtenteService {
         }else {
             throw new Exception("Utente non esistente");
         }
+    }
+
+
+    public List<UtenteNoleggiatoreDTO> getNoleggiatori(){
+        UtenteNoleggiatoreMapper mapper = new UtenteNoleggiatoreMapper();
+        List<UtenteNoleggiatoreDTO> unDTO = new ArrayList<>();
+        List<Utente> uList = utenteRepository.findByTipologia(Tipologia.NOLEGGIATORE);
+        uList.forEach(u -> unDTO.add(mapper.toDto(u)));
+        return unDTO;
+
     }
 }

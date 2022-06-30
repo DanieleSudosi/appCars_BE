@@ -15,11 +15,11 @@ public class NoleggiatoreResourse {
     @Autowired
     private NoleggiatoreService noleggiatoreService;
 
-    @GetMapping("/noleggiatore")
-    public List<Noleggiatore> getNoleggiatori(){
-
-        return this.noleggiatoreService.getNoleggiatori();
-    }
+//    @GetMapping("/noleggiatore")
+//    public List<Noleggiatore> getNoleggiatori(){
+//
+//        return this.noleggiatoreService.getNoleggiatori();
+//    }
 
     @GetMapping("/noleggiatore/{id}")
     public Noleggiatore getNoleggiatoreById(long id){
