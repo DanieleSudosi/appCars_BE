@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.finance.appCars.domain.enumeration.Stato;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -20,14 +21,10 @@ public class Noleggio {
     private Stato stato;
 
     @Column(name = "data_inizio")
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private Date dataInizio;
+    private LocalDate dataInizio;
 
     @Column(name = "data_reso")
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private Date dataReso;
+    private LocalDate dataReso;
 
     @ManyToOne
     @JoinColumn(name="noleggiatore_id", nullable=false)
