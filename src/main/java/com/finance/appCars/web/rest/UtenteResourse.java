@@ -3,6 +3,7 @@ package com.finance.appCars.web.rest;
 import com.finance.appCars.domain.Utente;
 import com.finance.appCars.domain.enumeration.Tipologia;
 import com.finance.appCars.service.UtenteService;
+import com.finance.appCars.service.dto.UtenteIdDTO;
 import com.finance.appCars.service.dto.UtenteLoginDTO;
 import com.finance.appCars.service.dto.UtenteNoleggiatoreDTO;
 import com.finance.appCars.service.dto.UtenteRegistrazioneDTO;
@@ -56,11 +57,14 @@ public class UtenteResourse {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UtenteLoginDTO uDTO) {
+    public ResponseEntity<UtenteIdDTO> login(@RequestBody UtenteLoginDTO uDTO) {
         try {
-        return ResponseEntity.ok(String.valueOf(this.utenteService.login(uDTO)));
+        return ResponseEntity.ok(this.utenteService.login(uDTO));
         } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+//            UtenteIdDTO uiDTO = new UtenteIdDTO();
+//            uiDTO.setMessaggio(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new UtenteIdDTO(e.getMessage()));
+
         }
     }
 
@@ -69,6 +73,8 @@ public class UtenteResourse {
 
         return this.utenteService.getNoleggiatori();
     }
+
+
 
 
 }

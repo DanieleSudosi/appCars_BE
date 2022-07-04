@@ -1,12 +1,8 @@
 package com.finance.appCars.domain;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.finance.appCars.domain.enumeration.Stato;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
-
 
 @Entity
 @Table(name = "noleggio")

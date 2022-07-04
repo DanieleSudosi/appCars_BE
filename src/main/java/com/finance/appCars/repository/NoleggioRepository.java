@@ -6,13 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
 public interface NoleggioRepository extends JpaRepository<Noleggio,Long>, JpaSpecificationExecutor<Noleggio> {
 
     List<Noleggio> findAllByStato(Stato s);
-    List<Noleggio> findAllByDataInizio(Date dataInizio);
-    List<Noleggio> findAllByDataReso(Date dataReso);
+    List<Noleggio> findAllByDataInizio(LocalDate dataInizio);
+    List<Noleggio> findAllByDataReso(LocalDate dataReso);
 }

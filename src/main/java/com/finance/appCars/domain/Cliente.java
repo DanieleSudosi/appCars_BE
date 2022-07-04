@@ -19,6 +19,9 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private Set<Noleggio> noleggiCliente = new HashSet<>();
 
+    @OneToMany(mappedBy = "cliente")
+    private Set<Movimenti> movimentiCliente = new HashSet<>();
+
   public Cliente(){}
 
     public long getId() {return id;}

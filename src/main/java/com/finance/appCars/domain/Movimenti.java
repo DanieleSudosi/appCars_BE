@@ -1,7 +1,5 @@
 package com.finance.appCars.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -20,8 +18,8 @@ public class Movimenti {
     private LocalDate dataPagamento;
 
     @ManyToOne
-    @JoinColumn(name="noleggio_id", nullable=false)
-    private Noleggio noleggio;
+    @JoinColumn(name="cliente_id", nullable=false)
+    private Cliente cliente;
 
     public long getId() {
         return id;
@@ -39,12 +37,12 @@ public class Movimenti {
         this.dataPagamento = dataPagamento;
     }
 
-    public Noleggio getNoleggio() {
-        return noleggio;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setNoleggio(Noleggio noleggio) {
-        this.noleggio = noleggio;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
 

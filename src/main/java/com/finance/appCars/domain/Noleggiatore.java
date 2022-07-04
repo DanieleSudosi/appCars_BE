@@ -6,8 +6,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "noleggiatore")
-public class Noleggiatore {
-
+public class Noleggiatore  {
+//extends Utente
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")

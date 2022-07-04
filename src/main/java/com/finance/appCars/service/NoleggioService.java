@@ -6,6 +6,7 @@ import com.finance.appCars.repository.NoleggioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +21,9 @@ public class NoleggioService {
 
     public Noleggio getNoleggio(long id){return noleggioRepository.findById(id).get();}
 
-    public List<Noleggio> getNoleggiByDataInizio(Date dataInizio){return noleggioRepository.findAllByDataInizio(dataInizio);}
+    public List<Noleggio> getNoleggiByDataInizio(LocalDate dataInizio){return noleggioRepository.findAllByDataInizio(dataInizio);}
 
-    public List<Noleggio> getNoleggiByDataReso(Date dataReso){return noleggioRepository.findAllByDataReso(dataReso);}
+    public List<Noleggio> getNoleggiByDataReso(LocalDate dataReso){return noleggioRepository.findAllByDataReso(dataReso);}
 
     public List<Noleggio> getNoleggiByStato(Stato s){return noleggioRepository.findAllByStato(s);}
 

@@ -2,8 +2,10 @@ package com.finance.appCars.service.dto;
 
 public class UtenteNoleggiatoreDTO {
 
+    private long id;
     private String nome;
     private String cognome;
+
 
     public String getNome() {
         return nome;
@@ -21,5 +23,11 @@ public class UtenteNoleggiatoreDTO {
         this.cognome = cognome;
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 }

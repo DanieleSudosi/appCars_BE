@@ -6,9 +6,11 @@ import com.finance.appCars.domain.Noleggiatore;
 import com.finance.appCars.domain.Utente;
 import com.finance.appCars.domain.enumeration.Tipologia;
 import com.finance.appCars.repository.UtenteRepository;
+import com.finance.appCars.service.dto.UtenteIdDTO;
 import com.finance.appCars.service.dto.UtenteLoginDTO;
 import com.finance.appCars.service.dto.UtenteNoleggiatoreDTO;
 import com.finance.appCars.service.dto.UtenteRegistrazioneDTO;
+import com.finance.appCars.service.mapper.UtenteIdMapper;
 import com.finance.appCars.service.mapper.UtenteNoleggiatoreMapper;
 import com.finance.appCars.service.mapper.UtenteRegistrazioneMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,11 +61,12 @@ public class UtenteService {
 
 
 
-    public Tipologia login(UtenteLoginDTO uDTO) throws Exception{
+    public UtenteIdDTO login(UtenteLoginDTO uDTO) throws Exception{
         Utente u = utenteRepository.findUtenteByUsername(uDTO.getUsername());
         if(!Objects.isNull(u)){
             if(u.getPassword().equals(uDTO.getPassword())){
-                return u.getTipologia();
+                UtenteIdMapper mapper = new UtenteIdMapper();
+                return mapper.toDto(u);
             }else {
                 throw new Exception(" Password non valida");
             }
