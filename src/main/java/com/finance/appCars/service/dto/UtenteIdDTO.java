@@ -7,6 +7,8 @@ public class UtenteIdDTO {
     private Tipologia tipologia;
     private String messaggio;
 
+    private String carta;
+
     public UtenteIdDTO() {
     }
     public UtenteIdDTO(String messaggio) {
@@ -15,6 +17,14 @@ public class UtenteIdDTO {
 
     public long getId() {
         return id;
+    }
+
+    public String getCarta() {
+        return carta;
+    }
+
+    public void setCarta(String carta) {
+        this.carta = carta;
     }
 
     public void setId(long id) {

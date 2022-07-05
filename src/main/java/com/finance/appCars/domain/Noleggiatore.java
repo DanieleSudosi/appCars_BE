@@ -16,8 +16,8 @@ public class Noleggiatore  {
     @Column(name = "p_iva")
     private String pIva;
 
-    @OneToMany(mappedBy = "noleggiatore")
-    private Set<Noleggio> noleggiNoleggiatore = new HashSet<>();
+//    @OneToMany(mappedBy = "noleggiatore")
+//    private Set<Noleggio> noleggiNoleggiatore = new HashSet<>();
 
     public Noleggiatore(){}
 
@@ -37,11 +37,11 @@ public class Noleggiatore  {
         this.pIva = pIva;
     }
 
-    public Set<Noleggio> getNoleggiNoleggiatore() {
-        return noleggiNoleggiatore;
-    }
-
-    public void setNoleggiNoleggiatore(Set<Noleggio> noleggiNoleggiatore) {
-        this.noleggiNoleggiatore = noleggiNoleggiatore;
-    }
+//    public Set<Noleggio> getNoleggiNoleggiatore() {
+//        return noleggiNoleggiatore;
+//    }
+//
+//    public void setNoleggiNoleggiatore(Set<Noleggio> noleggiNoleggiatore) {
+//        this.noleggiNoleggiatore = noleggiNoleggiatore;
+//    }
 }

@@ -58,9 +58,6 @@ public class UtenteService {
 
     public void deleteUtente(long id){utenteRepository.deleteById(id);}
 
-
-
-
     public UtenteIdDTO login(UtenteLoginDTO uDTO) throws Exception{
         Utente u = utenteRepository.findUtenteByUsername(uDTO.getUsername());
         if(!Objects.isNull(u)){

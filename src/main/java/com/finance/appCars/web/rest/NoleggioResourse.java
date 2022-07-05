@@ -3,6 +3,7 @@ package com.finance.appCars.web.rest;
 import com.finance.appCars.domain.Noleggio;
 import com.finance.appCars.domain.enumeration.Stato;
 import com.finance.appCars.service.NoleggioService;
+import com.finance.appCars.service.dto.NoleggioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +20,8 @@ public class NoleggioResourse {
     private NoleggioService noleggioService;
 
     @PostMapping("/noleggio")
-    public Noleggio addNoleggio(@RequestBody Noleggio n){
-        return this.noleggioService.addNoleggio(n);
+    public Noleggio addNoleggio(@RequestBody NoleggioDTO nDTO){
+        return this.noleggioService.addNoleggio(nDTO);
     }
 
     @GetMapping("/noleggio")
@@ -49,6 +50,11 @@ public class NoleggioResourse {
     @PutMapping("noleggio")
     public Noleggio updateNoleggio(@RequestBody Noleggio n){
         return this.noleggioService.updateNoleggio(n);
+    }
+
+    @PutMapping("noleggio/{stato}")
+    public Noleggio updateNoleggioByStato(@RequestBody Noleggio n,@PathVariable Stato s){
+        return this.noleggioService.updateNoleggioByStato(n,s);
     }
 
     @DeleteMapping("noleggio/{id}")

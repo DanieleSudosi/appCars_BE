@@ -16,11 +16,11 @@ public class Cliente {
     @Column(name = "carta")
     private String carta;
 
-    @OneToMany(mappedBy = "cliente")
-    private Set<Noleggio> noleggiCliente = new HashSet<>();
+//    @OneToMany(mappedBy = "cliente_id")
+//    private Set<Noleggio> noleggiCliente = new HashSet<>();
 
-    @OneToMany(mappedBy = "cliente")
-    private Set<Movimenti> movimentiCliente = new HashSet<>();
+//    @OneToMany(mappedBy = "cliente_id")
+//    private Set<Movimenti> movimentiCliente = new HashSet<>();
 
   public Cliente(){}
 
@@ -32,7 +32,7 @@ public class Cliente {
 
     public void setCarta(String carta) {this.carta = carta;}
 
-    public Set<Noleggio> getNoleggiCliente() {return noleggiCliente;}
-
-    public void setNoleggiCliente(Set<Noleggio> noleggiCliente) {this.noleggiCliente = noleggiCliente;}
+//    public Set<Noleggio> getNoleggiCliente() {return noleggiCliente;}
+//
+//    public void setNoleggiCliente(Set<Noleggio> noleggiCliente) {this.noleggiCliente = noleggiCliente;}
 }

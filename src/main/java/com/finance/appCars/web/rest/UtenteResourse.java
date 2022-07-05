@@ -61,10 +61,7 @@ public class UtenteResourse {
         try {
         return ResponseEntity.ok(this.utenteService.login(uDTO));
         } catch (Exception e){
-//            UtenteIdDTO uiDTO = new UtenteIdDTO();
-//            uiDTO.setMessaggio(e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new UtenteIdDTO(e.getMessage()));
-
         }
     }
 

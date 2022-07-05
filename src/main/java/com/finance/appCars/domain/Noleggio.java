@@ -38,4 +38,68 @@ public class Noleggio {
     @JoinColumn(name="contratto_id", nullable=false)
     private Contratto contratto;
 
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Stato getStato() {
+        return stato;
+    }
+
+    public void setStato(Stato stato) {
+        this.stato = stato;
+    }
+
+    public LocalDate getDataInizio() {
+        return dataInizio;
+    }
+
+    public void setDataInizio(LocalDate dataInizio) {
+        this.dataInizio = dataInizio;
+    }
+
+    public LocalDate getDataReso() {
+        return dataReso;
+    }
+
+    public void setDataReso(LocalDate dataReso) {
+        this.dataReso = dataReso;
+    }
+
+    public Noleggiatore getNoleggiatore() {
+        return noleggiatore;
+    }
+
+    public void setNoleggiatore(Noleggiatore noleggiatore) {
+        this.noleggiatore = noleggiatore;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Vettura getVettura() {
+        return vettura;
+    }
+
+    public void setVettura(Vettura vettura) {
+        this.vettura = vettura;
+    }
+
+    public Contratto getContratto() {
+        return contratto;
+    }
+
+    public void setContratto(Contratto contratto) {
+        this.contratto = contratto;
+    }
 }

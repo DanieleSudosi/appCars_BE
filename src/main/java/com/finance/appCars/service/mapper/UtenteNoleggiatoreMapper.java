@@ -8,7 +8,7 @@ public class UtenteNoleggiatoreMapper {
 
     public UtenteNoleggiatoreDTO toDto(Utente u){
         UtenteNoleggiatoreDTO uDTO = new UtenteNoleggiatoreDTO();
-        uDTO.setId(u.getId());
+        uDTO.setId(u.getNoleggiatore().getId());
         uDTO.setNome(u.getNome());
         uDTO.setCognome(u.getCognome());
         return uDTO;
