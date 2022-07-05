@@ -4,6 +4,7 @@ import com.finance.appCars.domain.Noleggio;
 import com.finance.appCars.domain.enumeration.Stato;
 import com.finance.appCars.service.NoleggioService;
 import com.finance.appCars.service.dto.NoleggioDTO;
+import org.hibernate.mapping.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,9 +43,9 @@ public class NoleggioResourse {
         return this.noleggioService.getNoleggiByDataReso(dataReso);
     }
 
-    @GetMapping("noleggio/{stato}")
-    public List<Noleggio> getNoleggiByStato(@PathVariable Stato s){
-        return this.noleggioService.getNoleggiByStato(s);
+    @GetMapping("noleggio/stato/{stato}")
+    public List<Noleggio> getNoleggiByStato(@PathVariable("stato") Stato stato){
+        return this.noleggioService.getNoleggiByStato(stato);
     }
 
     @PutMapping("noleggio")
@@ -53,8 +54,8 @@ public class NoleggioResourse {
     }
 
     @PutMapping("noleggio/{stato}")
-    public Noleggio updateNoleggioByStato(@RequestBody Noleggio n,@PathVariable Stato s){
-        return this.noleggioService.updateNoleggioByStato(n,s);
+    public Noleggio updateNoleggioByStato(@RequestBody Noleggio n,@PathVariable Stato stato){
+        return this.noleggioService.updateNoleggioByStato(n,stato);
     }
 
     @DeleteMapping("noleggio/{id}")

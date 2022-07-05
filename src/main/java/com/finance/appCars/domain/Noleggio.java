@@ -13,6 +13,7 @@ public class Noleggio {
     @SequenceGenerator(name = "sequenceGenerator")
     private long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "stato")
     private Stato stato;
 

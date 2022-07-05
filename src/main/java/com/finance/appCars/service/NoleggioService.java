@@ -34,7 +34,9 @@ public class NoleggioService {
 
     public List<Noleggio> getNoleggiByDataReso(LocalDate dataReso){return noleggioRepository.findAllByDataReso(dataReso);}
 
-    public List<Noleggio> getNoleggiByStato(Stato s){return noleggioRepository.findAllByStato(s);}
+    public List<Noleggio> getNoleggiByStato(Stato s){
+        return noleggioRepository.findAllByStato(s);
+    }
 
     public Noleggio updateNoleggio(Noleggio n){ return noleggioRepository.save(n);}
     public Noleggio updateNoleggioByStato(Noleggio n,Stato s){
