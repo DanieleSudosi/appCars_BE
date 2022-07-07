@@ -103,4 +103,5 @@ public class Noleggio {
     public void setContratto(Contratto contratto) {
         this.contratto = contratto;
     }
+
 }

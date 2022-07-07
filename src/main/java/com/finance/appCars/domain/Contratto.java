@@ -2,6 +2,7 @@ package com.finance.appCars.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -35,7 +36,8 @@ public class Contratto {
             inverseJoinColumns = { @JoinColumn(name = "servizi_id") })
     private Set<Servizio> servizi;
 
-
+    @OneToMany(mappedBy = "contratto")
+    private Set<Noleggio> noleggiContratto = new HashSet<>();
 
     public Contratto(){}
 
@@ -94,4 +96,6 @@ public class Contratto {
     public void setServizi(Set<Servizio> servizi) {
         this.servizi = servizi;
     }
+
+
 }

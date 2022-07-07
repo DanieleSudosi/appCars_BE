@@ -1,9 +1,11 @@
 package com.finance.appCars.web.rest;
 
 import com.finance.appCars.domain.Noleggio;
+import com.finance.appCars.domain.Vettura;
 import com.finance.appCars.domain.enumeration.Stato;
 import com.finance.appCars.service.NoleggioService;
 import com.finance.appCars.service.dto.NoleggioDTO;
+import com.finance.appCars.service.dto.VetturaDTO;
 import org.hibernate.mapping.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -53,13 +55,14 @@ public class NoleggioResourse {
         return this.noleggioService.updateNoleggio(n);
     }
 
-    @PutMapping("noleggio/{stato}")
-    public Noleggio updateNoleggioByStato(@RequestBody Noleggio n,@PathVariable Stato stato){
-        return this.noleggioService.updateNoleggioByStato(n,stato);
-    }
 
     @DeleteMapping("noleggio/{id}")
     public void deleteNoleggio(@PathVariable long id){
         this.noleggioService.deleteNoleggio(id);
+    }
+
+    @PutMapping("noleggio/{stato}")
+    public void setQuantitaByStato(@RequestBody VetturaDTO vDTO, @PathVariable Stato stato){
+        this.noleggioService.modificaQuantita(vDTO,stato);
     }
 }

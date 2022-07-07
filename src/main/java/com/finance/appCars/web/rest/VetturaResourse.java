@@ -3,6 +3,7 @@ package com.finance.appCars.web.rest;
 import com.finance.appCars.domain.Vettura;
 import com.finance.appCars.domain.enumeration.Alimentazione;
 import com.finance.appCars.service.VetturaService;
+import com.finance.appCars.service.dto.VetturaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,8 @@ public class VetturaResourse {
     private VetturaService vetturaService;
 
     @PostMapping("/vettura")
-        public Vettura addVettura(@RequestBody Vettura v){
-        return this.vetturaService.addVettura(v);
+        public Vettura addVettura(@RequestBody VetturaDTO vDTO){
+        return this.vetturaService.addVettura(vDTO);
     }
 
     @GetMapping("/vettura")
@@ -30,17 +31,9 @@ public class VetturaResourse {
     public Vettura getVetturaById(@PathVariable long id){
         return this.vetturaService.getVetturaById(id);
     }
-    @GetMapping("/vettura/{marca}")
-    public List<Vettura> getVettureByMarca(@PathVariable String marca) {
-        return this.vetturaService.getVettureByMarca(marca);
-    }
-    @GetMapping("/vettura/{modello}")
-    public List<Vettura> getVetturaByModello(@PathVariable String modello) {
-        return this.vetturaService.getVettureByModello(modello);
-    }
-    @GetMapping("/vettura/{alimentazione}")
-    public List<Vettura> getVetturaByAlimentazione(@PathVariable Alimentazione alimentazione) {
-        return this.vetturaService.getVettureByAlimentazione(alimentazione);
+    @PostMapping("/vettura/filter")
+    public List<Vettura> getVettureFilter(@RequestBody Vettura v) {
+        return this.vetturaService.getVettureByFilter(v);
     }
 
     @PutMapping("/vettura")

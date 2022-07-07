@@ -3,7 +3,10 @@ package com.finance.appCars.service;
 import com.finance.appCars.domain.Vettura;
 import com.finance.appCars.domain.enumeration.Alimentazione;
 import com.finance.appCars.repository.VetturaRepository;
+import com.finance.appCars.service.dto.VetturaDTO;
+import com.finance.appCars.service.mapper.VetturaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +15,14 @@ import java.util.List;
 public class VetturaService {
     @Autowired
     private VetturaRepository vetturaRepository;
+    @Autowired
+    private VetturaMapper mapper;
 
     //post
-    public Vettura addVettura(Vettura v){return vetturaRepository.save(v);}
+    public Vettura addVettura(VetturaDTO vDTO){
+        Vettura v = mapper.toEntity(vDTO);
+        return vetturaRepository.save(v);
+    }
     //put
     public void updateVettura(Vettura v){
         vetturaRepository.save(v);
@@ -27,11 +35,13 @@ public class VetturaService {
     public List<Vettura> getVetture(){return vetturaRepository.findAll();}
     //get by id
     public Vettura getVetturaById(long id){return vetturaRepository.findById(id).get();}
-    //get by marca
-    public List<Vettura> getVettureByMarca(String marca){ return vetturaRepository.findAllByMarca(marca);}
-    //get by modello
-    public List<Vettura> getVettureByModello(String modello){return vetturaRepository.findAllByModello(modello);}
-    //get by alimentazione
-    public List<Vettura> getVettureByAlimentazione(Alimentazione alimentazione){return vetturaRepository.findAllByAlimentazione(alimentazione);}
 
+
+    public List<Vettura> getVettureByFilter(Vettura v){
+        List<Vettura> lista = vetturaRepository.findVettureByFilter(v.getAlimentazione(),
+                v.getMarca(),
+                v.getModello(),
+                v.getQuantita());
+        return lista;
+    }
     }

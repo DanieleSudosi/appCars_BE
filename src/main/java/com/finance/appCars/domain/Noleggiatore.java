@@ -1,5 +1,7 @@
 package com.finance.appCars.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +18,12 @@ public class Noleggiatore  {
     @Column(name = "p_iva")
     private String pIva;
 
+    @OneToMany(mappedBy = "noleggiatore")
+    @JsonIgnore
+    private Set<Vettura> vettureNoleggiatore = new HashSet<>();
+
 //    @OneToMany(mappedBy = "noleggiatore")
+//
 //    private Set<Noleggio> noleggiNoleggiatore = new HashSet<>();
 
     public Noleggiatore(){}
@@ -44,4 +51,12 @@ public class Noleggiatore  {
 //    public void setNoleggiNoleggiatore(Set<Noleggio> noleggiNoleggiatore) {
 //        this.noleggiNoleggiatore = noleggiNoleggiatore;
 //    }
+
+    public Set<Vettura> getVettureNoleggiatore() {
+        return vettureNoleggiatore;
+    }
+
+    public void setVettureNoleggiatore(Set<Vettura> vettureNoleggiatore) {
+        this.vettureNoleggiatore = vettureNoleggiatore;
+    }
 }

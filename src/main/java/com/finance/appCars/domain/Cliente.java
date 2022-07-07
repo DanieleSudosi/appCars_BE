@@ -1,5 +1,7 @@
 package com.finance.appCars.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,10 +18,12 @@ public class Cliente {
     @Column(name = "carta")
     private String carta;
 
-//    @OneToMany(mappedBy = "cliente_id")
+//    @OneToMany(mappedBy = "cliente")
+//    @JsonIgnore
 //    private Set<Noleggio> noleggiCliente = new HashSet<>();
-
-//    @OneToMany(mappedBy = "cliente_id")
+//
+//    @OneToMany(mappedBy = "cliente")
+//    @JsonIgnore
 //    private Set<Movimenti> movimentiCliente = new HashSet<>();
 
   public Cliente(){}
@@ -35,4 +39,12 @@ public class Cliente {
 //    public Set<Noleggio> getNoleggiCliente() {return noleggiCliente;}
 //
 //    public void setNoleggiCliente(Set<Noleggio> noleggiCliente) {this.noleggiCliente = noleggiCliente;}
+//
+//    public Set<Movimenti> getMovimentiCliente() {
+//        return movimentiCliente;
+//    }
+//
+//    public void setMovimentiCliente(Set<Movimenti> movimentiCliente) {
+//        this.movimentiCliente = movimentiCliente;
+//    }
 }

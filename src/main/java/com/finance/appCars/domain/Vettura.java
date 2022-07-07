@@ -28,10 +28,11 @@ public class Vettura {
     private String descrizione;
 
     @Column(name = "quantita")
-    private int quantita;
+    private Integer quantita;
 
-//    @Column(name = "img")
-//    private String immagine;
+    @ManyToOne
+    @JoinColumn(name="noleggiatore_id")
+    private Noleggiatore noleggiatore;
 
     public Vettura(long id, String marca, String modello, Alimentazione alimentazione, String descrizione, int quantita) {
         this.id = id;
@@ -40,7 +41,6 @@ public class Vettura {
         this.alimentazione = alimentazione;
         this.descrizione = descrizione;
         this.quantita = quantita;
-//        this.immagine = immagine;
     }
 
     public Vettura() {
@@ -57,7 +57,7 @@ public class Vettura {
 
     public String getDescrizione() {return descrizione;}
 
-    public int getQuantita() {return quantita;}
+    public Integer getQuantita() {return quantita;}
 
     //setter
 
@@ -71,6 +71,13 @@ public class Vettura {
 
     public void setDescrizione(String descrizione) {this.descrizione = descrizione;}
 
-    public void setQuantita(int quantita) {this.quantita = quantita;}
+    public void setQuantita(Integer quantita) {this.quantita = quantita;}
 
+    public Noleggiatore getNoleggiatore() {
+        return noleggiatore;
+    }
+
+    public void setNoleggiatore(Noleggiatore noleggiatore) {
+        this.noleggiatore = noleggiatore;
+    }
 }
