@@ -16,6 +16,10 @@ public class Cliente {
     @Column(name = "carta")
     private String carta;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "utente_id", referencedColumnName = "id")
+    private Utente utente;
+
 //    @OneToMany(mappedBy = "cliente_id")
 //    private Set<Noleggio> noleggiCliente = new HashSet<>();
 
@@ -32,7 +36,15 @@ public class Cliente {
 
     public void setCarta(String carta) {this.carta = carta;}
 
-//    public Set<Noleggio> getNoleggiCliente() {return noleggiCliente;}
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
+
+    //    public Set<Noleggio> getNoleggiCliente() {return noleggiCliente;}
 //
 //    public void setNoleggiCliente(Set<Noleggio> noleggiCliente) {this.noleggiCliente = noleggiCliente;}
 }

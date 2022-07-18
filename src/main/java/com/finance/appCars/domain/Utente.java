@@ -30,13 +30,15 @@ public class Utente {
     @Column(name = "cognome")
     private String cognome;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
-    private Cliente cliente;
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    //private Cliente cliente;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "noleggiatore_id", referencedColumnName = "id")
-    private Noleggiatore noleggiatore;
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "noleggiatore_id", referencedColumnName = "id")
+    //private Noleggiatore noleggiatore;
+
+    public Utente(){}
 
 
     public long getId() {
@@ -71,17 +73,17 @@ public class Utente {
         this.tipologia = tipologia;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
+    //public Cliente getCliente() {
+        //return cliente;
+    //}
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+    //public void setCliente(Cliente cliente) {
+        //this.cliente = cliente;
+    //}
 
-    public Noleggiatore getNoleggiatore() {
-        return noleggiatore;
-    }
+    //public Noleggiatore getNoleggiatore() {
+        //return noleggiatore;
+    //}
 
     public String getNome() {
         return nome;
@@ -99,9 +101,9 @@ public class Utente {
         this.cognome = cognome;
     }
 
-    public void setNoleggiatore(Noleggiatore noleggiatore) {
-        this.noleggiatore = noleggiatore;
+    //public void setNoleggiatore(Noleggiatore noleggiatore) {
+        //this.noleggiatore = noleggiatore;
 
-    }
+    //}
 
 }
