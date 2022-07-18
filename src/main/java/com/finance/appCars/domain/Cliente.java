@@ -18,12 +18,14 @@ public class Cliente {
     @Column(name = "carta")
     private String carta;
 
-//    @OneToMany(mappedBy = "cliente")
-//    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "utente_id", referencedColumnName = "id")
+    private Utente utente;
+
+//    @OneToMany(mappedBy = "cliente_id")
 //    private Set<Noleggio> noleggiCliente = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "cliente")
-//    @JsonIgnore
+
+//    @OneToMany(mappedBy = "cliente_id")
 //    private Set<Movimenti> movimentiCliente = new HashSet<>();
 
   public Cliente(){}
@@ -36,15 +38,15 @@ public class Cliente {
 
     public void setCarta(String carta) {this.carta = carta;}
 
-//    public Set<Noleggio> getNoleggiCliente() {return noleggiCliente;}
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
+
+    //    public Set<Noleggio> getNoleggiCliente() {return noleggiCliente;}
 //
 //    public void setNoleggiCliente(Set<Noleggio> noleggiCliente) {this.noleggiCliente = noleggiCliente;}
-//
-//    public Set<Movimenti> getMovimentiCliente() {
-//        return movimentiCliente;
-//    }
-//
-//    public void setMovimentiCliente(Set<Movimenti> movimentiCliente) {
-//        this.movimentiCliente = movimentiCliente;
-//    }
 }

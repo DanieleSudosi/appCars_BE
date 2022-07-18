@@ -22,6 +22,10 @@ public class Noleggiatore  {
     @JsonIgnore
     private Set<Vettura> vettureNoleggiatore = new HashSet<>();
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "utente_id", referencedColumnName = "id")
+    private Utente utente;
+
 //    @OneToMany(mappedBy = "noleggiatore")
 //
 //    private Set<Noleggio> noleggiNoleggiatore = new HashSet<>();
@@ -44,7 +48,15 @@ public class Noleggiatore  {
         this.pIva = pIva;
     }
 
-//    public Set<Noleggio> getNoleggiNoleggiatore() {
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
+
+    //    public Set<Noleggio> getNoleggiNoleggiatore() {
 //        return noleggiNoleggiatore;
 //    }
 //

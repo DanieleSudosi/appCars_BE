@@ -15,15 +15,38 @@ public class ContrattoService {
     @Autowired
     private ContrattoRepository contrattoRepository;
 
-    public Contratto addContratto(Contratto c){return contrattoRepository.save(c);}
+    public Contratto addContratto(Contratto c) {
+        return contrattoRepository.save(c);
+    }
 
-    public List<Contratto> getContratti(){ return contrattoRepository.findAll();}
+    public List<Contratto> getContratti() {
+        return contrattoRepository.findAll();
+    }
 
-    public Contratto getContrattoById(long id){return contrattoRepository.findById(id).get();}
+    public Contratto getContrattoById(long id) {
+        return contrattoRepository.findById(id).get();
+    }
 
-    public List<Contratto> getContrattiByCosto(BigDecimal costoMensile){ return contrattoRepository.findContrattosByCostoMensile(costoMensile);}
+    public List<Contratto> getContrattiByCosto(BigDecimal costoMensile) {
+        return contrattoRepository.findContrattosByCostoMensile(costoMensile);
+    }
 
-    public Contratto updateContratto(Contratto c){return contrattoRepository.save(c);}
+    public Contratto updateContratto(Contratto c) {
+        return contrattoRepository.save(c);
+    }
 
-    public void deleteContratto(long id){contrattoRepository.deleteById(id);}
+    public void deleteContratto(long id) {
+        contrattoRepository.deleteById(id);
+    }
+
+    public List<Contratto> getContrattiByFilter(Contratto c) {
+        List<Contratto> lista = contrattoRepository.findContrattiByFilter(
+                 c.getCostoMensile(),
+                c.getTitoloContratto(),
+                c.getDescrizioneContratto(),
+                c.getDurataMax(),
+                c.getDurataMin());
+
+        return lista;
+    }
 }

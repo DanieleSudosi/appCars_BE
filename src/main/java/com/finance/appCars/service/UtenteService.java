@@ -28,6 +28,10 @@ public class UtenteService {
     private ClienteService clienteService;
     @Autowired
     private NoleggiatoreService noleggiatoreService;
+    @Autowired
+    private UtenteIdMapper utenteIdMapper;
+    @Autowired
+    private UtenteNoleggiatoreMapper utenteNoleggiatoreMapper;
 
     public Utente addUtente(UtenteRegistrazioneDTO uDTO, Tipologia tipologia){
             Utente u = new UtenteRegistrazioneMapper().toEntity(uDTO,tipologia);
@@ -35,16 +39,15 @@ public class UtenteService {
                Cliente c = new Cliente();
                c.setCarta(uDTO.getCodice());
                c = clienteService.saveCliente(c);
-               u.setCliente(c);
-               u = saveUtente(u);
+               c.setUtente(u);
             }else {
                 Noleggiatore n = new Noleggiatore();
                 n.setpIva(uDTO.getCodice());
                 n = noleggiatoreService.saveNoleggiatore(n);
-                u.setNoleggiatore(n);
-                u = saveUtente(u);
+                n.setUtente(u);
 
             }
+        u = saveUtente(u);
             return u;
     }
 
@@ -62,8 +65,7 @@ public class UtenteService {
         Utente u = utenteRepository.findUtenteByUsername(uDTO.getUsername());
         if(!Objects.isNull(u)){
             if(u.getPassword().equals(uDTO.getPassword())){
-                UtenteIdMapper mapper = new UtenteIdMapper();
-                return mapper.toDto(u);
+                return utenteIdMapper.toDto(u);
             }else {
                 throw new Exception(" Password non valida");
             }
@@ -74,10 +76,9 @@ public class UtenteService {
 
 
     public List<UtenteNoleggiatoreDTO> getNoleggiatori(){
-        UtenteNoleggiatoreMapper mapper = new UtenteNoleggiatoreMapper();
+        List<Noleggiatore> nList = noleggiatoreService.getNoleggiatori();
         List<UtenteNoleggiatoreDTO> unDTO = new ArrayList<>();
-        List<Utente> uList = utenteRepository.findByTipologia(Tipologia.NOLEGGIATORE);
-        uList.forEach(u -> unDTO.add(mapper.toDto(u)));
+        nList.forEach(n -> unDTO.add(utenteNoleggiatoreMapper.toDto(n)));
         return unDTO;
 
     }
