@@ -21,22 +21,19 @@ public class VetturaResourse {
         return this.vetturaService.addVettura(vDTO);
     }
 
-    @PostMapping("/vettura/filter")
-    public List<Vettura> getVettureFilter(@RequestBody Vettura v){
-        return this.vetturaService.getVettureFilter(v);
+    @GetMapping("/vettura")
+    public List<Vettura> getVetture(){
+        return this.vetturaService.getVetture();
     }
-
-    //prova filtro with get
-//    @GetMapping("/vettura")
-//    public List<Vettura> getVettureFilter(Vettura v) {
-//        return this.vetturaService.getVettureFilter(v);
-//    }
 
     @GetMapping("/vettura/{id}")
     public Vettura getVetturaById(@PathVariable long id){
         return this.vetturaService.getVetturaById(id);
     }
-
+    @PostMapping("/vettura/filter")
+    public List<Vettura> getVettureFilter(@RequestBody VetturaDTO vDTO) {
+        return this.vetturaService.getVettureByFilter(vDTO);
+    }
 
     @PutMapping("/vettura")
     public void updateVettura(@RequestBody VetturaDTO vDTO){

@@ -17,12 +17,14 @@ public interface VetturaRepository extends JpaRepository<Vettura,Long>, JpaSpeci
             "((v.alimentazione = :alimentazione AND :alimentazione is not null) OR :alimentazione is null) "
             + "AND ((v.marca LIKE concat('%',:marca,'%') AND :marca is not null) OR :marca is null) "
             + "AND ((v.modello LIKE concat('%',:modello,'%') AND :modello is not null) OR :modello is null) "
-            + "AND ((v.quantita = :quantita AND :quantita is not null) OR :quantita is null)")
+            + "AND ((v.quantita = :quantita AND :quantita is not null) OR :quantita is null) "
+            + "AND ((v.noleggiatore.id = :noleggiatoreId AND :noleggiatoreId is not null) OR :noleggiatoreId is null) ")
 
    List<Vettura> findVettureByFilter(@Param(value="alimentazione") Alimentazione alimentazione,
                                         @Param(value="marca") String marca,
                                         @Param(value = "modello") String modello,
-                                        @Param(value="quantita") Integer quantita);
+                                        @Param(value="quantita") Integer quantita,
+                                        @Param(value="noleggiatoreId") Long noleggiatoreId) ;
 
 
 

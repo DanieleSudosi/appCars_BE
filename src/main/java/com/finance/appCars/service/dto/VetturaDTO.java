@@ -1,6 +1,5 @@
 package com.finance.appCars.service.dto;
 
-import com.finance.appCars.domain.Noleggiatore;
 import com.finance.appCars.domain.enumeration.Alimentazione;
 
 public class VetturaDTO {
@@ -12,7 +11,7 @@ public class VetturaDTO {
     private Alimentazione alimentazione;
     private String descrizione;
     private Integer quantita;
-    private long noleggiatoreId;
+    private Long noleggiatoreId;
 
     public long getId() {
         return id;
@@ -62,11 +61,11 @@ public class VetturaDTO {
         this.quantita = quantita;
     }
 
-    public long getNoleggiatoreId() {
+    public Long getNoleggiatoreId() {
         return noleggiatoreId;
     }
 
-    public void setNoleggiatoreId(long noleggiatoreId) {
+    public void setNoleggiatoreId(Long noleggiatoreId) {
         this.noleggiatoreId = noleggiatoreId;
     }
 }
