@@ -32,7 +32,7 @@ public class UtenteResourse {
         return this.utenteService.addUtente(uDTO,Tipologia.CLIENTE);
     }
 
-    @GetMapping("/utente")
+    @PostMapping("/utente/filter")
     public List<Utente> getUtenti(){
 
         return this.utenteService.getUtenti();

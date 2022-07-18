@@ -12,6 +12,8 @@ public class UtenteIdMapper {
         if(u.getTipologia().equals(Tipologia.CLIENTE)){
             uDTO.setId(u.getCliente().getId());
             uDTO.setCarta(u.getCliente().getCarta());
+        }else{
+            uDTO.setId(u.getNoleggiatore().getId());
         }
         return uDTO;
     }

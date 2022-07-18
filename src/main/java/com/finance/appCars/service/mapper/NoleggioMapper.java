@@ -25,6 +25,7 @@ public class NoleggioMapper {
         Noleggio n = new Noleggio();
         n.setDataInizio(nDTO.getDataInizio());
         n.setDataReso(nDTO.getDataReso());
+        n.setStato(nDTO.getStato());
 
         Cliente c = clienteRepository.findById(nDTO.getClienteId()).orElse(null);
         n.setCliente(c);

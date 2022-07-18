@@ -25,4 +25,5 @@ public interface VetturaRepository extends JpaRepository<Vettura,Long>, JpaSpeci
                                         @Param(value="quantita") Integer quantita);
 
 
+
 }

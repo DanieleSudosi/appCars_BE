@@ -1,7 +1,6 @@
 package com.finance.appCars.web.rest;
 
 import com.finance.appCars.domain.Vettura;
-import com.finance.appCars.domain.enumeration.Alimentazione;
 import com.finance.appCars.service.VetturaService;
 import com.finance.appCars.service.dto.VetturaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,23 +21,26 @@ public class VetturaResourse {
         return this.vetturaService.addVettura(vDTO);
     }
 
-    @GetMapping("/vettura")
-    public List<Vettura> getVetture(){
-        return this.vetturaService.getVetture();
+    @PostMapping("/vettura/filter")
+    public List<Vettura> getVettureFilter(@RequestBody Vettura v){
+        return this.vetturaService.getVettureFilter(v);
     }
+
+    //prova filtro with get
+//    @GetMapping("/vettura")
+//    public List<Vettura> getVettureFilter(Vettura v) {
+//        return this.vetturaService.getVettureFilter(v);
+//    }
 
     @GetMapping("/vettura/{id}")
     public Vettura getVetturaById(@PathVariable long id){
         return this.vetturaService.getVetturaById(id);
     }
-    @PostMapping("/vettura/filter")
-    public List<Vettura> getVettureFilter(@RequestBody Vettura v) {
-        return this.vetturaService.getVettureByFilter(v);
-    }
+
 
     @PutMapping("/vettura")
-    public void updateVettura(@RequestBody Vettura v){
-        this.vetturaService.updateVettura(v);
+    public void updateVettura(@RequestBody VetturaDTO vDTO){
+        this.vetturaService.updateVettura(vDTO);
     }
 
     @DeleteMapping("/vettura/{id}")

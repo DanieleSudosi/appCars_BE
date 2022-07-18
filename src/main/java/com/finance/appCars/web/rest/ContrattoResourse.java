@@ -21,7 +21,7 @@ public class ContrattoResourse {
         return this.contrattoService.addContratto(c);
     }
 
-    @GetMapping("/contratto")
+    @PostMapping("/contratto/filter")
     public List<Contratto> getContratti(){
         return this.contrattoService.getContratti();
     }
