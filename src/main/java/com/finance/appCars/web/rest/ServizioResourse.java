@@ -19,7 +19,7 @@ public class ServizioResourse {
     public Servizio addServizio(@RequestBody Servizio s){
         return this.servizioService.addServizio(s);
     }
-    @GetMapping("/servizio")
+    @PostMapping("/servizio/filter")
     public List<Servizio> getServizi(){
         return this.servizioService.getServizi();
     }

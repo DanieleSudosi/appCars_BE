@@ -15,7 +15,7 @@ public class ClienteResourse {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/cliente")
+    @PostMapping("/cliente/filter")
     public List<Cliente> getClienti(){
         return this.clienteService.getClienti();
     }

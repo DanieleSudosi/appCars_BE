@@ -7,10 +7,13 @@ import com.finance.appCars.domain.enumeration.Stato;
 import java.time.LocalDate;
 
 public class NoleggioDTO {
-//    private long id;
+
 
     private LocalDate dataInizio;
     private LocalDate dataReso;
+
+
+    private Stato stato;
     private long noleggiatoreId;
     private long clienteId;
     private long contrattoId;
@@ -62,5 +65,13 @@ public class NoleggioDTO {
 
     public void setVetturaId(long vetturaId) {
         this.vetturaId = vetturaId;
+    }
+
+    public Stato getStato() {
+        return stato;
+    }
+
+    public void setStato(Stato stato) {
+        this.stato = stato;
     }
 }

@@ -24,7 +24,8 @@ public class VetturaService {
         return vetturaRepository.save(v);
     }
     //put
-    public void updateVettura(Vettura v){
+    public void updateVettura(VetturaDTO vDTO){
+        Vettura v = mapper.toEntity(vDTO);
         vetturaRepository.save(v);
     }
     //delete
@@ -37,11 +38,12 @@ public class VetturaService {
     public Vettura getVetturaById(long id){return vetturaRepository.findById(id).get();}
 
 
-    public List<Vettura> getVettureByFilter(Vettura v){
+    public List<Vettura> getVettureByFilter(VetturaDTO v){
         List<Vettura> lista = vetturaRepository.findVettureByFilter(v.getAlimentazione(),
                 v.getMarca(),
                 v.getModello(),
-                v.getQuantita());
+                v.getQuantita(),
+                v.getNoleggiatoreId());
         return lista;
     }
     }

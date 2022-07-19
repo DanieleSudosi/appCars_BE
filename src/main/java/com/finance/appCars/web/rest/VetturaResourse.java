@@ -1,7 +1,6 @@
 package com.finance.appCars.web.rest;
 
 import com.finance.appCars.domain.Vettura;
-import com.finance.appCars.domain.enumeration.Alimentazione;
 import com.finance.appCars.service.VetturaService;
 import com.finance.appCars.service.dto.VetturaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +31,13 @@ public class VetturaResourse {
         return this.vetturaService.getVetturaById(id);
     }
     @PostMapping("/vettura/filter")
-    public List<Vettura> getVettureFilter(@RequestBody Vettura v) {
-        return this.vetturaService.getVettureByFilter(v);
+    public List<Vettura> getVettureFilter(@RequestBody VetturaDTO vDTO) {
+        return this.vetturaService.getVettureByFilter(vDTO);
     }
 
     @PutMapping("/vettura")
-    public void updateVettura(@RequestBody Vettura v){
-        this.vetturaService.updateVettura(v);
+    public void updateVettura(@RequestBody VetturaDTO vDTO){
+        this.vetturaService.updateVettura(vDTO);
     }
 
     @DeleteMapping("/vettura/{id}")

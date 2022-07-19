@@ -4,6 +4,7 @@ import com.finance.appCars.domain.Noleggio;
 import com.finance.appCars.domain.Vettura;
 import com.finance.appCars.domain.enumeration.Stato;
 import com.finance.appCars.repository.NoleggioRepository;
+import com.finance.appCars.repository.VetturaRepository;
 import com.finance.appCars.service.dto.NoleggioDTO;
 import com.finance.appCars.service.dto.VetturaDTO;
 import com.finance.appCars.service.mapper.NoleggioMapper;
@@ -21,6 +22,8 @@ public class NoleggioService {
 
     @Autowired
     private VetturaService vetturaService;
+    @Autowired
+    private VetturaRepository vetturaRepo;
     @Autowired
     private NoleggioMapper noleggioMapper;
     @Autowired
@@ -64,17 +67,36 @@ public class NoleggioService {
     public void deleteNoleggio(long id) {
         noleggioRepository.deleteById(id);
     }
-    public void modificaQuantita(VetturaDTO vDTO, Stato stato){
-        Vettura v = vetturaMapper.toEntity(vDTO);
-        switch(stato) {
+
+//    public void modificaQuantita(VetturaDTO vDTO, Stato stato){
+//        switch(stato) {
+//            case APPROVATO:
+//                vDTO.setQuantita(vDTO.getQuantita() - 1);
+//                break;
+//            case CONCLUSO:
+//                vDTO.setQuantita(vDTO.getQuantita()+1);
+//                break;
+//        }
+//        vetturaService.updateVettura(vDTO);
+//    }
+
+    public void modificaQuantita(NoleggioDTO nDTO,Stato stato){
+        Noleggio n = noleggioMapper.toEntity(nDTO);
+        Vettura v = vetturaRepo.findById(nDTO.getVetturaId()).get();
+        switch (stato) {
             case APPROVATO:
+                n.setStato(Stato.APPROVATO);
                 v.setQuantita(v.getQuantita() - 1);
+                vetturaRepo.save(v);
+                noleggioRepository.save(n);
                 break;
             case CONCLUSO:
-                v.setQuantita(v.getQuantita()+1);
+                n.setStato(Stato.CONCLUSO);
+                v.setQuantita(v.getQuantita() + 1);
+                vetturaRepo.save(v);
+                noleggioRepository.save(n);
                 break;
         }
-        vetturaService.updateVettura(v);
     }
 }
 

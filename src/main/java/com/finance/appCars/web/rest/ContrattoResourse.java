@@ -21,10 +21,10 @@ public class ContrattoResourse {
         return this.contrattoService.addContratto(c);
     }
 
-//    @GetMapping("/contratto")
-//    public List<Contratto> getContratti(){
-//        return this.contrattoService.getContratti();
-//    }
+    @PostMapping("/contratto/filter")
+    public List<Contratto> getContratti(){
+        return this.contrattoService.getContratti();
+    }
 
     @GetMapping("/contratto/{id}")
     public Contratto getContratto(@PathVariable long id){
@@ -34,11 +34,6 @@ public class ContrattoResourse {
     @GetMapping("/contratto/{costo}")
     public List<Contratto> getContrattiByCosto(@PathVariable("costo") BigDecimal costoMensile){
         return this.contrattoService.getContrattiByCosto(costoMensile);
-    }
-
-    @PostMapping("/contratto/filter")
-    public List<Contratto> getContrattiByFilter(@RequestBody Contratto c){
-        return this.contrattoService.getContrattiByFilter(c);
     }
 
     @PutMapping("/contratto")
