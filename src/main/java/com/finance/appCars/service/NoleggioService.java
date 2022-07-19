@@ -68,7 +68,9 @@ public class NoleggioService {
         noleggioRepository.deleteById(id);
     }
 
-//    public void modificaQuantita(VetturaDTO vDTO, Stato stato){
+//    public void modificaQuan(Long noleggioId, Stato stato){
+//        Noleggio n = noleggioRepository.findById(noleggioId).get();
+//        VetturaDTO vDTO = vetturaMapper.toDTO;
 //        switch(stato) {
 //            case APPROVATO:
 //                vDTO.setQuantita(vDTO.getQuantita() - 1);
@@ -82,7 +84,7 @@ public class NoleggioService {
 
     public void modificaQuantita(NoleggioDTO nDTO,Stato stato){
         Noleggio n = noleggioMapper.toEntity(nDTO);
-        Vettura v = vetturaRepo.findById(nDTO.getVetturaId()).get();
+        Vettura v = n.getVettura();
         switch (stato) {
             case APPROVATO:
                 n.setStato(Stato.APPROVATO);
